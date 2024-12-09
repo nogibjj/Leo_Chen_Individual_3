@@ -3,9 +3,12 @@ from flask import Blueprint, jsonify, request, current_app, render_template
 chat_bp = Blueprint('chat', __name__, url_prefix='/chat')
 
 
-@chat_bp.route('/', methods=['POST'])
+@chat_bp.route('/input', methods=['POST'])
 def chat():
     try:
+        current_app.logger.info(f"Request path: {request.path}")
+        current_app.logger.info(f"Request full path: {request.full_path}")
+        current_app.logger.info(f"Request URL: {request.url}")
         current_app.logger.info("Received request to chat")
         user_message = request.json.get('message', '').strip()
         if not user_message:
