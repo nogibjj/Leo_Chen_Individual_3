@@ -163,7 +163,7 @@
         }
       } catch (error) {
         loadingIndicator.remove();
-        addMessage("Error: Could not get response from server", false);
+        addMessage(`Error: Could not get response from server, ${error}`, false);
       } finally {
         messageInput.disabled = false;
         sendButton.disabled = false;
