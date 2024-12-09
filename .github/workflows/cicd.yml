@@ -30,6 +30,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: bionicotaku/ids706_final_project:${{ github.sha }}
           file: ./Dockerfile
 
@@ -48,4 +49,4 @@ jobs:
           app-name: "ids706"
           slot-name: "production"
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_9145a4ff4eaf4937bde0769d0d459db0 }}
-          images: "index.docker.io/${{ secrets.AzureAppService_ContainerUsername_318f92841dcf48b19cefb188ee3d855e }}/bionicotaku/ids706_final_project:${{ github.sha }}"
+          images: "bionicotaku/ids706_final_project:${{ github.sha }}"
