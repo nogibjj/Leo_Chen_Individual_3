@@ -10,6 +10,8 @@ def chat():
         if not user_message:
             return jsonify({"error": "Message cannot be empty"}), 400
 
+        current_app.logger.info(f"Received message: {user_message}")
+        
         response = current_app.llm_service.generate_response(user_message)
         return jsonify({"response": response})
 
