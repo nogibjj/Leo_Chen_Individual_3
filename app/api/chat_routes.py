@@ -16,9 +16,11 @@ def chat():
         return jsonify({"response": response})
 
     except Exception as e:
+        current_app.logger.error(f"Error generating response: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
 
 @chat_bp.route('/chat-interface')
 def chat_interface():
+    current_app.logger.info("Rendering chat interface")
     return render_template('llm-chat.html')
