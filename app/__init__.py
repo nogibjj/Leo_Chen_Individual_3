@@ -11,15 +11,9 @@ def create_app():
     # initialize CORS
     CORS(app)
 
-    # set up logging
-    app.logger.handlers.clear()
     handler = logging.StreamHandler(sys.stdout)
-    handler.setFormatter(logging.Formatter(
-        '[%(asctime)s] %(levelname)s in %(module)s: %(message)s'
-    ))
     app.logger.addHandler(handler)
     app.logger.setLevel(logging.INFO)
-    app.logger.propagate = False
 
     app.logger.info("The app is starting...")
 
@@ -33,12 +27,10 @@ def create_app():
     app.register_blueprint(chat_bp)
     app.register_blueprint(analysis_bp)
 
-    app.logger.info("The app is initialized...")
-
     # the main page
     @app.route('/')
     def index():
-        app.logger.info("Rendering index page")
         return render_template('index.html')
 
+    app.logger.info("The app is initialized...")
     return app

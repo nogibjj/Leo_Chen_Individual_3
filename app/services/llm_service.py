@@ -28,12 +28,11 @@ class LLMService:
         API_KEY = os.getenv("XAI_API_KEY")
         BASE_URL = "https://api.x.ai/v1"
         
-        current_app.logger.info(f"API_KEY: {API_KEY}")
-        
         self.client = OpenAI(
             api_key=API_KEY,
             base_url=BASE_URL,
         )
+        
         current_app.logger.info("X.AI client initialized")
 
     def generate_response(self, prompt):
