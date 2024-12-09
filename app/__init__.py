@@ -25,7 +25,7 @@ def create_app():
     app.register_blueprint(chat_bp)
     app.register_blueprint(analysis_bp)
     
-    # 主页路由可以保留在主应用中
+    # the main page
     @app.route('/')
     def index():
         return render_template('index.html')
