@@ -16,6 +16,9 @@ def create_app():
     app.logger.addHandler(logging.StreamHandler(sys.stdout))
     app.logger.setLevel(logging.INFO)
     
+    app.logger.info("The app is starting...")
+    
+    # initialize llm service
     with app.app_context():
         llm_service = LLMService()
         app.llm_service = llm_service
@@ -24,6 +27,8 @@ def create_app():
     from app.api import chat_bp, analysis_bp
     app.register_blueprint(chat_bp)
     app.register_blueprint(analysis_bp)
+    
+    app.logger.info("The app is initialized...")
     
     # the main page
     @app.route('/')
