@@ -33,4 +33,4 @@ docker-build:
 	-t bionicotaku/ids706_final_project --push .
 
 docker-run:
-	docker run -p 8080:8080 -e WEBSITES_PORT=8080 bionicotaku/ids706_final_project
+	docker run -p 8080:8080 --env-file .env bionicotaku/ids706_final_project
