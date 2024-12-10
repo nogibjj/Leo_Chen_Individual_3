@@ -24,14 +24,21 @@ class LLMService:
         return cls._instance
 
     def _initialize_client(self):
+        
+        API_KEY = os.getenv("XAI_API_KEY")
+        BASE_URL = "https://api.x.ai/v1"
+        
         self.client = OpenAI(
-            api_key=os.getenv("XAI_API_KEY"),
-            base_url="https://api.x.ai/v1",
+            api_key=API_KEY,
+            base_url=BASE_URL,
         )
+        
         current_app.logger.info("X.AI client initialized")
 
     def generate_response(self, prompt):
         try:
+            current_app.logger.info(f"Generating response for prompt: {prompt}")
+            
             messages = [
                 {"role": "system", "content": "You are a helpful AI assistant. Respond in a clear and friendly manner."},
                 {"role": "user", "content": prompt}

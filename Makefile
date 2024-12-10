@@ -27,10 +27,10 @@ push:
 all: install format test lint run
 
 docker-build:
-	# docker build -t bionicotaku/ids706_final_project .
-	docker buildx create --use &&\
-	docker buildx build --platform linux/amd64,linux/arm64 \
-	-t bionicotaku/ids706_final_project --push .
+	docker build -t bionicotaku/ids706_final_project .
+	# docker buildx create --use &&\
+	# docker buildx build --platform linux/amd64,linux/arm64 \
+	# -t bionicotaku/ids706_final_project --push .
 
 docker-run:
 	docker run -p 8080:8080 --env-file .env bionicotaku/ids706_final_project
