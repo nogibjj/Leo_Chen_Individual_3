@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, request, current_app, render_template
-
 chat_bp = Blueprint('chat', __name__, url_prefix='/chat')
 
 
