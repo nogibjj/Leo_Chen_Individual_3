@@ -88,7 +88,13 @@
 
   <!-- Explore Movie Genres Over Time -->
   <!-- form for inputting start and end year -->
-  <h1>Explore Movie Genres Over Time</h1>
+  <h1 style="color: #2c3e50; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Explore Movie Genres Over Time</h1>
+  <h3 style="color: #2c3238; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; max-width: 600px;">
+    This service allows users to analyze the popularity of different movie genres over a specified time range.
+  </h3>
+  <h3 style="color: #34495e; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; max-width: 600px;">
+    Please enter a start year and end year to analyze the movie genres over time.
+  </h3>
   <form id="yearForm" class="form-style">
     <label for="startYear">Start Year:</label>
     <input type="number" id="startYear" name="startYear" required>
@@ -98,10 +104,10 @@
   </form>
 
   <!-- Canvas for the genre chart -->
-  <div style="width: 500px; height: 300px;">
-  <canvas id="genreChart" width="500" height="300"></canvas>
+  <div style="width: 600px; height: 400px;">
+  <canvas id="genreChart" width="600" height="400"></canvas>
   </div>
-
+  <div id="error-message" style="color: red; margin-top: 10px;"></div>
   <script>
     let genreChart; 
     document.getElementById('yearForm').addEventListener('submit', function(event) {
@@ -118,6 +124,13 @@
         })
         .then(response => response.json())
         .then(data => {
+          if (data.error) {
+          document.getElementById('error-message').textContent = 'Error: ' + data.error;
+          return;
+        }
+
+        document.getElementById('error-message').textContent = '';
+
           const ctx = document.getElementById('genreChart').getContext('2d');
           const colors = [
             'rgba(255, 99, 132, 0.2)',
@@ -198,7 +211,13 @@
 
 <!-- Explore Movie Popularity -->
  <!-- form for inputting year -->
-<h1>Explore Movie Popularity</h1>
+<h1 style="color: #2c3e50; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Explore Movie Popularity</h1>
+<h3 style="color: #34495e; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; max-width: 600px;">
+  This service displays the most and least popular movies based on TMDB's popularity scores.
+</h3>
+<h3 style="color: #34495e; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; max-width: 600px;">
+  Please enter a specific year to get the most and least popular movies.
+</h3>
 <form id="popularityForm" class="form-style">
   <label for="popularityYear">Year:</label>
   <input type="number" id="popularityYear" name="year" required>
@@ -206,8 +225,8 @@
 </form>
 
 <!-- Canvas for the popularity chart -->
-<div style="width: 500px; height: 300px;">
-  <canvas id="popularityChart" width="500" height="300"></canvas>
+<div style="width: 600px; height: 400px;">
+  <canvas id="popularityChart" width="600" height="400"></canvas>
   </div>
 
   <script>
@@ -227,10 +246,11 @@
       .then(response => response.json())
       .then(data => {
         if (data.error) {
-          console.error('Error:', data.error);
+          document.getElementById('error-message').textContent = 'Error: ' + data.error;
           return;
         }
 
+        document.getElementById('error-message').textContent = '';
         const topMovies = data.top_movies;
         const bottomMovies = data.bottom_movies;
 

@@ -71,7 +71,15 @@ def analyze_data():
     try:
         start_year = int(start_year)
         end_year = int(end_year)
+
+        if start_year > end_year:
+            return jsonify({"error": "Start year cannot be greater than end year"}), 404
+        
         movie_data = get_movie_data(start_year, end_year)
+
+        if not movie_data:
+            return jsonify({"error": "No data found for the specified years"}), 404
+        
         current_app.logger.info("movie_data: %s", movie_data)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
