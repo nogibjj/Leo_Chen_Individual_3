@@ -74,6 +74,7 @@ This service allows users to analyze the popularity of different movie genres ov
 - Each genre is represented by a different color in the stack, showing its contribution to the total number of movies for that year.  
 
 This visualization helps users identify trends in genre preferences over time, such as the rise or decline of specific genres.
+![image](https://github.com/user-attachments/assets/b776e0e3-706c-402d-b151-7b757d3bf9e0)
 
 2. **Top Movies by TMDB Popularity**
 This service displays the most and least popular movies based on TMDB's popularity scores. It provides the following input:  
@@ -86,11 +87,13 @@ This service displays the most and least popular movies based on TMDB's populari
 - The x-axis shows movie titles, and the y-axis shows their popularity scores.  
 
 This visualization highlights the standout successes and underperformers in terms of popularity for the selected year.
+![image](https://github.com/user-attachments/assets/dd1c636f-c9d1-4b3e-a193-31c84c90683a)
 
 3. **AI Chat Assistant**
 Additionally, the homepage includes a section titled "Welcome to AI Chat Assistant," where users can click the "Start Chat" button to navigate to the chat interface.
 
 The design of the page is clean and modern, utilizing CSS to ensure a responsive and visually appealing experience across different devices.
+![image](https://github.com/user-attachments/assets/c4583557-9980-4b90-98d9-7a97a6de258f)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
