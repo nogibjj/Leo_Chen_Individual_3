@@ -2,6 +2,7 @@
 # Data Engineering Final Project: Stock Price Visualization and Sentiment Analysis
 
 [![Build and deploy container app to Azure Web App - ids706](https://github.com/bionicotaku/IDS706_Final_Project/actions/workflows/cicd.yml/badge.svg)](https://github.com/bionicotaku/IDS706_Final_Project/actions/workflows/cicd.yml)
+
 ## Team Members:
 - Han Li
 - Jingxuan Li
@@ -9,66 +10,60 @@
 - Kaisen Yao
 
 ## Links
-Website: [https://www.ids706final.dingzhen.us/](https://www.ids706final.dingzhen.us/)
+- Website: [https://www.ids706final.dingzhen.us/](https://www.ids706final.dingzhen.us/)
+- Introductory video: www.youtube.com
 
-Introductory video: 快拍视频！！！！
-
-## Project Description:
-This project incorporated all the skills we learned in Data Engineering to create a application offers services for analyzing movie popularity and genre trends over time. Users can input a start and end year to explore how different movie genres have evolved in popularity. Additionally, users can enter a specific year to view the most and least popular movies based on TMDB's popularity scores. The site also features an AI chat assistant for interactive user engagement using X.AI API. The following technologies are used for this project:
+## Project Description
+This project integrates various data engineering skills to create a web application that analyzes movie popularity and genre trends over time. Users can input a start and end year to explore how different movie genres have evolved in popularity. Additionally, users can specify a year to view the most and least popular movies based on TMDB popularity scores. The platform also features an AI chat assistant powered by the X.AI API for interactive engagement. Technologies used in this project include:
 
 - ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 - ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![SQL](https://img.shields.io/badge/sql-%2307405e.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 - ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Project Architecture:
-得画图
+## Project Architecture
+![Diagram](diagram.png)
 
-这是一个基于Flask的Web应用程序，采用了微服务架构，主要包含以下几个核心组件：
+This Flask-based web application adopts a microservices architecture, comprising the following components:
+
 ### 1. Frontend
-- 使用HTML5、CSS3和JavaScript构建用户界面
-- 使用Chart.js进行数据可视化
-- 实现了响应式设计��确保在不同设备上的良好显示
+- Built with HTML5, CSS3, and JavaScript
+- Data visualization using Chart.js
+- Responsive design for optimal display across devices
 
 ### 2. Backend
-- Flask作为Web框架
-- PostgreSQL作为数据库
-- RESTful API设计
-- Grok3 LLM集成用于AI聊天功能
+- Flask as the web framework
+- PostgreSQL as the database
+- RESTful API design
+- Grok3 LLM integration for AI chat functionality
 
-### 3. DevOps (自动化开发部署)
-- Docker容器化，并托管到Docker Hub
-- Azure Web App部署，使用了 Infrastructure as Code。同时使用Azure Database for PostgreSQL来构建数据库
-- GitHub Actions自动化CI/CD
-- 使用环境变量来处理API key等敏感信息
+### 3. DevOps (Automated Development and Deployment)
+- Docker containerization hosted on Docker Hub
+- Azure Web App deployment with Infrastructure as Code, and Azure Database for PostgreSQL
+- CI/CD automation with GitHub Actions
+- Environment variables for handling sensitive information such as API keys
 
 ### 4. CI/CD Pipeline
+The `.github/workflows` defines a CI/CD workflow that automates building and deploying a Docker container to Azure Web App whenever code is pushed to the `main` branch or the workflow is manually triggered. This ensures seamless integration and deployment.
 
-This CI/CD workflow defined in `.github/workflows`automates the process of building a Docker container from the code repository and deploying it to an Azure Web App whenever code is pushed to the `main` branch or the workflow is manually triggered. It ensures seamless integration and deployment to the production environment.
-
-1. 代码推送到GitHub main分支
-2. GitHub Actions触发自动Test和构建
-3. Docker镜像构建
-4. 推送到Docker Hub
-5. 自动部署到Azure Web App
-
+1. Code pushed to GitHub's main branch
+2. Automated testing and building triggered by GitHub Actions
+3. Docker image built and pushed to Docker Hub
+4. Deployment to Azure Web App
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## Infrastructure as Code
-
-本项目使用了Azure Resource Manager (ARM) templates for deploying the IDS706 project infrastructure，自动创建以下资源：
+Azure Resource Manager (ARM) templates were used to automate the deployment of the project infrastructure, creating resources such as:
 
 - Web App: Basic (B3) tier with Docker container
-- Database: PostgreSQL Flexible
- Server (Standard_B1ms)
+- Database: PostgreSQL Flexible Server (Standard_B1ms)
 - Location: East US (web app) and East US 2 (database)
 
-具体流程如下：
-1. 首先 `az login` 来登录到Azure, 然后进入本项目的 `ids706-infrastructure` 文件夹
+**Steps**:
+1. Login to Azure with `az login`, then navigate to the `ids706-infrastructure` directory.
+
 2. Create resource group:
 ```
 az group create --name ids706final --location eastus
@@ -109,34 +104,30 @@ locust -f load_test.py --host=https://www.ids706final.dingzhen.us
 Due to our Azure Student Subscription limitations, we could only use Standard S3 SKU with a maximum of 10 instances. Each instance was configured with 9 workers and 4 threads to achieve maximum concurrent capacity.
 As shown in these graphs, the peak requests per second reached around 1,600, with a stable maximum load of approximately 1,200. When reaching 10,000 users per second, the 95th percentile latency exceeded 60,000ms, indicating maximum load capacity. On average, 50% of the requests had latency within 500ms.
 
+## Local Deployment
+Ensure that a `.env` file containing the `XAI_API_KEY` environment variable is created beforehand to enable the Grok3 LLM chat functionality.
 
+### Using `.devcontainer` Configuration for GitHub/GitLab Codespaces:
+- `make install`: Install dependencies
+- `make run`: Run the application
 
-## 本地部署
-注意需要预先创建一个 `.env` 文件，包含 `XAI_API_KEY` 环境变量来使用Grok3大语言模型聊天功能。
-
-可以采用.devcontainer configuration for Github/Gitlab Codespaces:
-- `make install` Install dependencies
-- `make run` Run the application
-
-也可以直接使用Docker:
-- `make docker-build` Build Docker image
-- `make docker-run` Run Docker container
+### Using Docker:
+- `make docker-build`: Build the Docker image
+- `make docker-run`: Run the Docker container
 
 ## The Application:
-The application is deployed on Azure Web App Services, 并且采用了CloudFlare提供的域名，以使用自定义域名。
+The application is deployed on Azure Web App Services, utilizing a CloudFlare-provided domain for custom domain usage.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## Application Overview: Movie Trend Analysis and AI Chat Assistant
 
 This project is a web application designed to analyze movie trends and provide an AI chat assistant. It features two main functionalities:
 
-
 1. **AI Chat Assistant**
-用户可以和最新发布的 Grok3 大语言模型对话，如果用户在下请求了电影分析数据，再次在此处对话时会自动将这些数据作为context发送给后端。
+Users can interact with the latest Grok3 large language model. If movie analysis data is requested, the same data will be automatically included as context in subsequent interactions.
 
-The design of the page is clean and modern, utilizing CSS to ensure a responsive and visually appealing experience across different devices.
+TThe design of the page is clean and modern, utilizing CSS to ensure a responsive and visually appealing experience across different devices.
 <img width="1186" alt="Screenshot 2024-12-11 at 23 03 19" src="https://github.com/user-attachments/assets/6e91859d-f776-4ebf-a7d9-0c782cdd2f25" />
 
 2. **Explore Movie Genres Over Time**
@@ -191,4 +182,3 @@ In this project, Flask serves as a microservice framework to build and deploy th
 We utilized ChatGPT to assist in debugging and optimizing our frontend UI. By leveraging its capabilities, we were able to identify and resolve issues more efficiently, as well as enhance the overall user interface design to ensure a more intuitive and visually appealing experience for our users.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
