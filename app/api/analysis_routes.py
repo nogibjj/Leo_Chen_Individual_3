@@ -3,14 +3,15 @@ from flask import Blueprint, jsonify, request, current_app
 from datetime import datetime
 import ast
 
-# ！！！！！db信息需要加密
+# ！！！！！db info need to be encrypted
 conn_params = {
     "dbname": "postgres",
     "user": "ids706",
     "password": "!Qq123456",
     "host": "ids706.postgres.database.azure.com",
     "port": "5432"
-    }
+}
+
 
 def get_movie_data(start_year, end_year):
 
@@ -32,15 +33,15 @@ def get_movie_data(start_year, end_year):
     # current_app.logger.info("Executing query: %s with start_year=%s, end_year=%s", query, start_year, end_year)
     cursor.execute(query, (start_year, end_year))
     results = cursor.fetchall()
-    
+
     # current_app.logger.info("Query results: %s", results)
     movie_data = {}
     for year, genres_str, movie_count in results:
         genres = ast.literal_eval(genres_str)
-        
+
         if year not in movie_data:
             movie_data[year] = {}
-        
+
         for genre in genres:
             if genre not in movie_data[year]:
                 movie_data[year][genre] = 0
@@ -52,7 +53,10 @@ def get_movie_data(start_year, end_year):
 
     return movie_data
 
+
 analysis_bp = Blueprint('analysis', __name__, url_prefix='/analysis')
+
+
 @analysis_bp.route('/health')
 def health_check():
     return jsonify({"status": "healthy"}), 200
@@ -74,12 +78,12 @@ def analyze_data():
 
         if start_year > end_year:
             return jsonify({"error": "Start year cannot be greater than end year"}), 404
-        
+
         movie_data = get_movie_data(start_year, end_year)
 
         if not movie_data:
             return jsonify({"error": "No data found for the specified years"}), 404
-        
+
         current_app.logger.info("movie_data: %s", movie_data)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -106,7 +110,7 @@ def analyze_data():
     return jsonify(response_data), 200
 
 
-#api for analyze movie popularity
+# api for analyze movie popularity
 @analysis_bp.route('/popularity', methods=['POST'])
 def analyze_popularity():
     data = request.get_json()

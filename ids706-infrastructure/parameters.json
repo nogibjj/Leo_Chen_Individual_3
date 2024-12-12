@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "webAppName": {
+            "value": "ids706"
+        },
+        "webAppSku": {
+            "value": "B3"
+        },
+        "dockerImage": {
+            "value": "bionicotaku/ids706_final_project:latest"
+        },
+        "location": {
+            "value": "eastus"
+        },
+        "dbServerName": {
+            "value": "ids706"
+        },
+        "dbLocation": {
+            "value": "eastus2"
+        },
+        "administratorLogin": {
+            "value": "ids706"
+        },
+        "administratorLoginPassword": {
+            "value": null // need to be provided by user
+        },
+        "version": {
+            "value": "16"
+        }
+    }
+}

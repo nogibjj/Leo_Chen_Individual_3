@@ -1,0 +1,152 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "webAppName": {
+            "type": "string",
+            "defaultValue": "ids706",
+            "metadata": {
+                "description": "Web app name"
+            }
+        },
+        "webAppSku": {
+            "type": "string",
+            "defaultValue": "B3",
+            "metadata": {
+                "description": "The SKU of App Service Plan"
+            }
+        },
+        "dockerImage": {
+            "type": "string",
+            "defaultValue": "bionicotaku/ids706_final_project:latest",
+            "metadata": {
+                "description": "The Docker image to deploy"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "eastus",
+            "metadata": {
+                "description": "Location for web app resources"
+            }
+        },
+        "dbServerName": {
+            "type": "string",
+            "defaultValue": "ids706",
+            "metadata": {
+                "description": "Server Name for PostgreSQL"
+            }
+        },
+        "dbLocation": {
+            "type": "string",
+            "defaultValue": "eastus2",
+            "metadata": {
+                "description": "Location for database"
+            }
+        },
+        "administratorLogin": {
+            "type": "string",
+            "defaultValue": "ids706",
+            "metadata": {
+                "description": "Database administrator login name"
+            }
+        },
+        "administratorLoginPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Database administrator password"
+            }
+        },
+        "version": {
+            "type": "string",
+            "defaultValue": "16",
+            "metadata": {
+                "description": "PostgreSQL version"
+            }
+        }
+    },
+    "variables": {
+        "appServicePlanName": "[format('ASP-{0}', parameters('webAppName'))]",
+        "dockerImageName": "[format('DOCKER|{0}', parameters('dockerImage'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2024-04-01",
+            "name": "[variables('appServicePlanName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('webAppSku')]",
+                "tier": "Basic"
+            },
+            "kind": "linux",
+            "properties": {
+                "reserved": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2024-04-01",
+            "name": "[parameters('webAppName')]",
+            "location": "[parameters('location')]",
+            "kind": "app,linux,container",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+            ],
+            "properties": {
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+                "siteConfig": {
+                    "linuxFxVersion": "[variables('dockerImageName')]",
+                    "numberOfWorkers": 1,
+                    "alwaysOn": true,
+                    "http20Enabled": true
+                },
+                "clientAffinityEnabled": false,
+                "httpsOnly": true
+            }
+        },
+        {
+            "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+            "apiVersion": "2024-08-01",
+            "name": "[parameters('dbServerName')]",
+            "location": "[parameters('dbLocation')]",
+            "sku": {
+                "name": "Standard_B1ms",
+                "tier": "Burstable"
+            },
+            "properties": {
+                "version": "[parameters('version')]",
+                "administratorLogin": "[parameters('administratorLogin')]",
+                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+                "storage": {
+                    "storageSizeGB": 32,
+                    "iops": 120,
+                    "autoGrow": "Enabled"
+                },
+                "backup": {
+                    "backupRetentionDays": 7,
+                    "geoRedundantBackup": "Disabled"
+                },
+                "network": {
+                    "publicNetworkAccess": "Enabled"
+                },
+                "dataEncryption": {
+                    "type": "SystemManaged"
+                },
+                "highAvailability": {
+                    "mode": "Disabled"
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "webAppHostName": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.Web/sites', parameters('webAppName'))).defaultHostName]"
+        },
+        "databaseServerName": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.DBforPostgreSQL/flexibleServers', parameters('dbServerName'))).fullyQualifiedDomainName]"
+        }
+    }
+}
