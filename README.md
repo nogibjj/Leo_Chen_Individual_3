@@ -1,22 +1,4 @@
 # IDS706_Final_Project
-
-
-	docker buildx create --use &&\
-	docker buildx build --platform linux/amd64,linux/arm64 \
-	-t bionicotaku/ids706_individual --push .
-
-当你使用 --platform linux/amd64,linux/arm64 参数时:
-Docker buildx 会自动为指定的每个平台构建镜像
-所有架构的镜像会被打上相同的标签 (在这里是 bionicotaku/ids706_individual)
-Docker Hub 会将它们作为同一个镜像的不同架构版本存储
-当用户拉取镜像时，Docker 会自动选择匹配其系统架构的版本
-你可以在 Docker Hub 上看到这个镜像支持多个架构。比如在网页界面上会显示:
-linux/amd64
-linux/arm64
-当其他人使用 docker pull bionicotaku/ids706_individual 时:
-在 Intel/AMD 处理器的机器上会自动拉取 amd64 版本
-在 ARM 处理器(如 M1/M2 Mac)上会自动拉取 arm64 版本
-
 # Data Engineering Final Project: Stock Price Visualization and Sentiment Analysis
 
 [![Build and deploy container app to Azure Web App - ids706](https://github.com/bionicotaku/IDS706_Final_Project/actions/workflows/cicd.yml/badge.svg)](https://github.com/bionicotaku/IDS706_Final_Project/actions/workflows/cicd.yml)
@@ -43,7 +25,41 @@ This project incorporated all the skills we learned in Data Engineering to creat
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Project Architecture:
-待补充
+得画图
+
+这是一个基于Flask的Web应用程序，采用了微服务架构，主要包含以下几个核心组件：
+### 1. Frontend
+- 使用HTML5、CSS3和JavaScript构建用户界面
+- 使用Chart.js进行数据可视化
+- 实现了响应式设计，确保在不同设备上的良好显示
+
+### 2. Backend
+- Flask作为Web框架
+- PostgreSQL作为数据库
+- RESTful API设计
+- Grok3 LLM集成用于AI聊天功能
+
+### 3. DevOps (自动化开发部署)
+- Docker容器化，并托管到Docker Hub
+- Azure Web App部署，使用了 Infrastructure as Code。同时使用Azure Database for PostgreSQL来构建数据库
+- GitHub Actions自动化CI/CD
+- 使用环境变量来处理API key等敏感信息
+
+### 4. CI/CD Pipeline
+
+This CI/CD workflow defined in `.github/workflows`automates the process of building a Docker container from the code repository and deploying it to an Azure Web App whenever code is pushed to the `main` branch or the workflow is manually triggered. It ensures seamless integration and deployment to the production environment.
+
+1. 代码推送到GitHub main分支
+2. GitHub Actions触发自动Test和构建
+3. Docker镜像构建
+4. 推送到Docker Hub
+5. 自动部署到Azure Web App
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Infrastructure as Code
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -53,7 +69,10 @@ This project incorporated all the skills we learned in Data Engineering to creat
 待补充
 
 ## The Application:
-The application is deployed on Azure Web App Services and can be accessed using the following link: [https://www.ids706final.dingzhen.us/](https://www.ids706final.dingzhen.us/)
+The application is deployed on Azure Web App Services, 并且采用了CloudFlare提供的域名，以使用自定义域名。
+It can be accessed using the following link: 
+
+[https://www.ids706final.dingzhen.us/](https://www.ids706final.dingzhen.us/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,15 +141,7 @@ In our project, we use Flask to create API endpoints and psycopg2 to connect to 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## CI/CD Pipeline
-This CI/CD workflow defined in `.github/workflows`automates the process of building a Docker container from the code repository and deploying it to an Azure Web App whenever code is pushed to the `main` branch or the workflow is manually triggered. It ensures seamless integration and deployment to the production environment.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Infrastructure as Code
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## AI Tools 
