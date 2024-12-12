@@ -97,8 +97,18 @@ az postgres flexible-server firewall-rule create \
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Load Testing:
-
+We used the `Locust` library to perform load testing on our Flask application. The code can be found in load_test.py. The load test on Locust was configured to test 10,000 requests per second.
+```
 locust -f load_test.py --host=https://www.ids706final.dingzhen.us
+```
+ Here are the test results:
+
+<img width="1242" alt="Screenshot 2024-12-12 at 01 17 19" src="https://github.com/user-attachments/assets/cfc2e1ef-235d-48f6-96f8-544281ee4728" />
+![total_requests_per_second_1733983092 742](https://github.com/user-attachments/assets/73f8beaf-ea43-4d1b-bfd2-782fb321bedb)
+
+Due to our Azure Student Subscription limitations, we could only use Standard S3 SKU with a maximum of 10 instances. Each instance was configured with 9 workers and 4 threads to achieve maximum concurrent capacity.
+As shown in these graphs, the peak requests per second reached around 1,600, with a stable maximum load of approximately 1,200. When reaching 10,000 users per second, the 95th percentile latency exceeded 60,000ms, indicating maximum load capacity. On average, 50% of the requests had latency within 500ms.
+
 
 
 ## 本地部署
