@@ -93,7 +93,8 @@ This service allows users to analyze the popularity of different movie genres ov
 - Each genre is represented by a different color in the stack, showing its contribution to the total number of movies for that year.  
 
 This visualization helps users identify trends in genre preferences over time, such as the rise or decline of specific genres.
-![image](https://github.com/user-attachments/assets/b776e0e3-706c-402d-b151-7b757d3bf9e0)
+<img width="1284" alt="Screenshot 2024-12-11 at 23 02 19" src="https://github.com/user-attachments/assets/00cac431-f5c2-4e56-9433-1dc2c7dbf983" />
+
 
 2. **Top Movies by TMDB Popularity**
 This service displays the most and least popular movies based on TMDB's popularity scores. It provides the following input:  
@@ -106,13 +107,15 @@ This service displays the most and least popular movies based on TMDB's populari
 - The x-axis shows movie titles, and the y-axis shows their popularity scores.  
 
 This visualization highlights the standout successes and underperformers in terms of popularity for the selected year.
-![image](https://github.com/user-attachments/assets/dd1c636f-c9d1-4b3e-a193-31c84c90683a)
+<img width="1164" alt="Screenshot 2024-12-11 at 23 02 39" src="https://github.com/user-attachments/assets/ccbbef56-a1e6-4a35-a49e-d6e5d5d78ef1" />
+
 
 3. **AI Chat Assistant**
 Additionally, the homepage includes a section titled "Welcome to AI Chat Assistant," where users can click the "Start Chat" button to navigate to the chat interface.
 
 The design of the page is clean and modern, utilizing CSS to ensure a responsive and visually appealing experience across different devices.
-![image](https://github.com/user-attachments/assets/c4583557-9980-4b90-98d9-7a97a6de258f)
+<img width="1186" alt="Screenshot 2024-12-11 at 23 03 19" src="https://github.com/user-attachments/assets/6e91859d-f776-4ebf-a7d9-0c782cdd2f25" />
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -128,8 +131,6 @@ This page is the chat interface where users can chat with the AI chat assistant.
 In this project, Flask serves as a microservice framework to build and deploy the web application for movie trend analysis and AI chat assistance. Flask, being lightweight, is ideal for creating small-scale microservices. It manages routing, handling requests for movie genre and popularity analysis, and returns data in JSON format. The application integrates with HTML templates to generate dynamic web pages, using JavaScript and Chart.js for data visualization. Flask is containerized using Docker, ensuring consistent deployment across environments, and is deployed on platforms like Azure Web App Services. This microservice architecture allows for modular, scalable design, facilitating future enhancements and maintenance.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ## Data Engineering
 
