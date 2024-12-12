@@ -16,9 +16,8 @@ Introductory video: 快拍视频！！！！
 ## Project Description:
 This project incorporated all the skills we learned in Data Engineering to create a application offers services for analyzing movie popularity and genre trends over time. Users can input a start and end year to explore how different movie genres have evolved in popularity. Additionally, users can enter a specific year to view the most and least popular movies based on TMDB's popularity scores. The site also features an AI chat assistant for interactive user engagement using X.AI API. The following technologies are used for this project:
 
-- ![SQL](https://img.shields.io/badge/Database-SQL-blue?logo=postgresql&logoColor=white)
 - ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-- ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+- ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![SQL](https://img.shields.io/badge/sql-%2307405e.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 - ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
 
@@ -31,7 +30,7 @@ This project incorporated all the skills we learned in Data Engineering to creat
 ### 1. Frontend
 - 使用HTML5、CSS3和JavaScript构建用户界面
 - 使用Chart.js进行数据可视化
-- 实现了响应式设计，确保在不同设备上的良好显示
+- 实现了响应式设计��确保在不同设备上的良好显示
 
 ### 2. Backend
 - Flask作为Web框架
@@ -104,6 +103,7 @@ locust -f load_test.py --host=https://www.ids706final.dingzhen.us
  Here are the test results:
 
 <img width="1242" alt="Screenshot 2024-12-12 at 01 17 19" src="https://github.com/user-attachments/assets/cfc2e1ef-235d-48f6-96f8-544281ee4728" />
+
 ![total_requests_per_second_1733983092 742](https://github.com/user-attachments/assets/73f8beaf-ea43-4d1b-bfd2-782fb321bedb)
 
 Due to our Azure Student Subscription limitations, we could only use Standard S3 SKU with a maximum of 10 instances. Each instance was configured with 9 workers and 4 threads to achieve maximum concurrent capacity.
