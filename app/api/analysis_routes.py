@@ -2,6 +2,7 @@ import psycopg2
 from flask import Blueprint, jsonify, request, current_app
 from datetime import datetime
 import ast
+analysis_bp = Blueprint('analysis', __name__, url_prefix='/analysis')
 
 # ！！！！！db info need to be encrypted
 conn_params = {
@@ -54,15 +55,11 @@ def get_movie_data(start_year, end_year):
     return movie_data
 
 
-analysis_bp = Blueprint('analysis', __name__, url_prefix='/analysis')
-
-
 @analysis_bp.route('/health')
 def health_check():
-    return jsonify({"status": "healthy"}), 200
+    return '', 200
 
 
-# api for analyze movie genres over time
 @analysis_bp.route('/analyze', methods=['POST'])
 def analyze_data():
     data = request.get_json()

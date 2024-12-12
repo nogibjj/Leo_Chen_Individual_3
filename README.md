@@ -98,7 +98,8 @@ az postgres flexible-server firewall-rule create \
 
 ## Load Testing:
 
-待补充
+locust -f load_test.py --host=https://www.ids706final.dingzhen.us
+
 
 ## 本地部署
 注意需要预先创建一个 `.env` 文件，包含 `XAI_API_KEY` 环境变量来使用Grok3大语言模型聊天功能。

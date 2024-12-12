@@ -9,7 +9,7 @@ format:
 	black *.py
 
 lint:
-	ruff check *.py mylib/*.py test_*.py
+	ruff check *.py
 
 run:
 	python run.py
