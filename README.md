@@ -1,4 +1,4 @@
-# IDS706_Final_Project
+# IDS706 Final Project
 # Data Engineering Final Project: Movie Trends & Analytics Platform
 
 [![Build and deploy container app to Azure Web App - ids706](https://github.com/bionicotaku/IDS706_Final_Project/actions/workflows/cicd.yml/badge.svg)](https://github.com/bionicotaku/IDS706_Final_Project/actions/workflows/cicd.yml)
@@ -11,7 +11,7 @@
 
 ## Links
 - Website: [https://www.ids706final.dingzhen.us/](https://www.ids706final.dingzhen.us/)
-- Introductory video: www.youtube.com
+- Demo Video: [https://youtu.be/1AW61ni-LEU](https://youtu.be/1AW61ni-LEU)
 
 ## Project Description:
 This project incorporated all the skills we learned in Data Engineering to create an application that offers services for analyzing movie popularity and genre trends over time. Users can input a start and end year to explore how different movie genres have evolved in popularity. Additionally, users can enter a specific year to view the most and least popular movies based on TMDB's popularity scores. The site also features an AI chat assistant for interactive user engagement using X.AI API. The following technologies are used for this project:
@@ -122,7 +122,7 @@ This project is a web application designed to analyze movie trends and provide a
 Users can interact with the latest released Grok3 large language model. If users have previously requested movie analysis data, this data will automatically be sent to the backend as context during subsequent conversations.
 
 The design of the page is clean and modern, utilizing CSS to ensure a responsive and visually appealing experience across different devices.
-<img width="1186" alt="Screenshot 2024-12-11 at 23 03 19" src="https://github.com/user-attachments/assets/6e91859d-f776-4ebf-a7d9-0c782cdd2f25" />
+<img width="1284" alt="Screenshot 2024-12-11 at 23 02 19" src="https://github.com/user-attachments/assets/00cac431-f5c2-4e56-9433-1dc2c7dbf983" />
 
 2. **Explore Movie Genres Over Time**
 This service allows users to analyze the popularity of different movie genres over a specified time range. It provides the following inputs:
@@ -136,7 +136,7 @@ This service allows users to analyze the popularity of different movie genres ov
 - Each genre is represented by a different color in the stack, showing its contribution to the total number of movies for that year.
 
 This visualization helps users identify trends in genre preferences over time, such as the rise or decline of specific genres.
-<img width="1284" alt="Screenshot 2024-12-11 at 23 02 19" src="https://github.com/user-attachments/assets/00cac431-f5c2-4e56-9433-1dc2c7dbf983" />
+<img width="1164" alt="Screenshot 2024-12-11 at 23 02 39" src="https://github.com/user-attachments/assets/ccbbef56-a1e6-4a35-a49e-d6e5d5d78ef1" />
 
 3. **Top Movies by TMDB Popularity**
 This service displays the most and least popular movies based on TMDB's popularity scores. It provides the following input:  
@@ -149,7 +149,7 @@ This service displays the most and least popular movies based on TMDB's populari
 - The x-axis shows movie titles, and the y-axis shows their popularity scores.
 
 This visualization highlights the standout successes and underperformers in terms of popularity for the selected year.
-<img width="1164" alt="Screenshot 2024-12-11 at 23 02 39" src="https://github.com/user-attachments/assets/ccbbef56-a1e6-4a35-a49e-d6e5d5d78ef1" />
+<img width="1186" alt="Screenshot 2024-12-11 at 23 03 19" src="https://github.com/user-attachments/assets/6e91859d-f776-4ebf-a7d9-0c782cdd2f25" />
 
 ## Chat Interface Page:
 This page is the chat interface where users can chat with the AI chat assistant. The chat assistant is built using X.AI API. The chat interface is built using Flask and HTML.
