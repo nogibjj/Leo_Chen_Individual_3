@@ -1,13 +1,6 @@
-# IDS706 Final Project
-# Data Engineering Final Project: Movie Trends & Analytics Platform
+# Leo Chen Individual 3
 
 [![Build and deploy container app to Azure Web App - ids706](https://github.com/bionicotaku/IDS706_Final_Project/actions/workflows/cicd.yml/badge.svg)](https://github.com/bionicotaku/IDS706_Final_Project/actions/workflows/cicd.yml)
-
-## Team Members:
-- Han Li
-- Jingxuan Li
-- Leo Chen
-- Kaisen Yao
 
 ## Links
 - Website: [https://www.ids706final.dingzhen.us/](https://www.ids706final.dingzhen.us/)
@@ -160,7 +153,5 @@ In this project, Flask serves as a microservice framework to build and deploy th
 ## Data Engineering
 In our project, we use Flask to create API endpoints and psycopg2 to connect to and query the PostgreSQL database using SQL, with PostgreSQL serving as the backend for data storage and analysis. Additionally, we use the ast module to parse strings into Python expressions. These technologies collectively support extracting and analyzing movie data from the database and providing data services through APIs.
 
-## AI Tools
-1. ChatGPT
-
-We utilized ChatGPT to assist in debugging and optimizing our frontend UI. By leveraging its capabilities, we were able to identify and resolve issues more efficiently, as well as enhance the overall user interface design to ensure a more intuitive and visually appealing experience for our users.
+## Conclusion and Recommendation
+The management team should prioritize investing in action and adventure movies, which consistently demonstrate strong global box office performance and appeal to a broad demographic. Additionally, consider family-friendly animated films, as they often have high profitability due to cross-generational appeal and merchandise opportunities. Emerging trends suggest that psychological thrillers and horror films, which typically have lower production costs, yield high returns on investment. To refine strategies, analyze audience preferences in target markets, streaming trends, and social media engagement to identify niche opportunities within these genres.
